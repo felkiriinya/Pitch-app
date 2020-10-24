@@ -14,3 +14,9 @@ def index():
     
     return render_template('index.html', title = title)
 
+@main.route('/loggedin')
+def loggedin():
+
+    title = 'Pitch Deck'
+
+    return render_template('loggedin.html',title =title)

@@ -1,17 +1,31 @@
 {% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf%}
 
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/register.css')}}">
+{% endblock %}
+
 {% block content %}
-<div class="container">
-<div class="row">
-<div class="col-md-2"> </div>
-<div class="col-md-8">
+<div class="container text-center">
+    
+    <div>
+        <div class="row">
+        
+            <h3 class="text-center" style="text-decoration: underline; font-weight: bold; font-family: Arial, Helvetica, sans-serif; font-size: 30px; margin-right: 40%;">SIGN UP HERE</h3>
+            <br><br>
+            <div class="col-md-1"> </div>
+            <div class="col-md-9">
+    
+            {{wtf.quick_form(registration_form)}}
+    
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
 
-{{wtf.quick_form(registration_form)}}
-
-</div>
-<div class="col-md-2"></div>
-</div>
+    
 </div>
 
 {% endblock%}
+

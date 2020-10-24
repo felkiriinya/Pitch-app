@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block styles %}
+    {{ super() }}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" type="text/css">
+
+    {% endblock %}
+</head>
+<body>
+            <!-- Navbar block  --> 
+        {% block navbar %}
+        {% include 'navbar.html' %}
+        {% endblock %}  
+
+        {% block content %}
+        <div class="container text-center">
+            <img src="{{ url_for('static', filename='images/bulb.jpg') }}" alt="">
+            <div class="text-content">
+                <h1><span style="color:rgb(202, 77, 31);">When pitching your design idea</span> you should always talk about <span style="color:rgb(202, 77, 31);">the why</span> behind the solution.</h1>
+                <br>
+                
+                
+            </div>
+
+            
+        </div>
+   
+
+    {% endblock %}
+</body>
+</html>
