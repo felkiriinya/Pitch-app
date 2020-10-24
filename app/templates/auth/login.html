@@ -3,6 +3,7 @@
 
 {% block styles%}
 {{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 <link rel="stylesheet" href="{{url_for('static',filename='css/register.css')}}">
 {% endblock %}
 
@@ -19,7 +20,8 @@
             <div class="col-md-9">
     
                  <!--Flash message -->
-                {% for message in get_flashed_messages() %}
+                {% for mess Bio.',validators = [Required()])
+                submit = SubmitField('Submit')age in get_flashed_messages() %}
                 <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 {{ message }}

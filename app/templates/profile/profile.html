@@ -5,13 +5,16 @@
 {% block navbar %}
         {% include 'navbar.html' %}
 {% endblock %}  
+<head>
+    {% block styles%}
+    {{ super() }}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/profile.css')}}">
+    {% endblock %}
+           
+    {% block content %}
+</head>
 
-{% block styles%}
-{{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/profile.css')}}">
-{% endblock %}
-       
-{% block content %}
 <div class="container">
     <div class="row">
     <!-- displaying  Username-->
@@ -27,14 +30,27 @@
             {% endif %}
             
             {% if user == current_user %}
-            <a href="{{url_for('main.update_profile',uname=user.username)}}" style=" font-size: 20px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Add or Edit your Bio</a>
+            <a href="{{url_for('main.update_profile',uname=user.username)}}" style=" font-size: 20px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color:rgb(184, 76, 37) ;">Add or Edit your Bio</a>
             {% endif %} 
             <br><br>
             {% if user.profile_pic_path %}
             <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
             {%else%}
             <p style="font-size: 20px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">You have no profile picture</p>
+            <p style="font-size: 20px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Add a profile picture</p>
+
+            {% if user == current_user %}
+               
+                <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
+            
+                <input type="file"  name="photo" class="form-control" style="width: 60%;" required>
+                <br>
+                <input type="submit" style="color: black;">
+                </form>
             {% endif %}
+            {% endif %}
+
+            
         </div>
 
         <div class="col-md-5">
