@@ -10,6 +10,7 @@ img {
     width: 100%;
     height: 80vh;
     object-fit: cover;
+    margin-top: 0%;
 }
 
 .text-content {
@@ -22,4 +23,7 @@ img {
 h1 {
     font-size: 5rem;
     
+}
+a:hover{
+    background-color: tomato;
 }
