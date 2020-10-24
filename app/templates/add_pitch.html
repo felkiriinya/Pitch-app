@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+{% block navbar %}
+        {% include 'navbar.html' %}
+{% endblock %}  
+
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/profile.css')}}">
+{% endblock styles%}
+{% block content %}
+<div class="container form"> 
+  <h2 class="text-center">Add a pitch</h2>
+    <div class="row">
+      <div class= "col-md-2"> </div>
+      <div class="col-md-8">
+      <!--Flash message -->
+      {% for message in get_flashed_messages() %}
+        <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+        </div>
+      {% endfor %}
+      <!-- Login form -->
+      
+      {{wtf.quick_form(form)}}
+     </div>
+     <div class="col-md-2"> </div>
+    </div>
+</div>
+{% endblock %}

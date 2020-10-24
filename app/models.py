@@ -41,7 +41,13 @@ class Pitch(db.Model):
 
     id = db.Column(db.Integer,primary_key = True) 
     name = db.Column(db.String(255))
+    content = db.Column(db.String())
+    owner = db.Column(db.String())
     users = db.relationship('User',backref ='pitch',lazy='dynamic')
+
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
 
     def __repr__(self):
         return f'Pitch{self.name}'       

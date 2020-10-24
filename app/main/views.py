@@ -1,8 +1,8 @@
-from flask import render_template,request,redirect,url_for,abort
+from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from flask_login import login_required
-from ..models import User
-from .forms import UpdateProfile
+from ..models import User,Pitch
+from .forms import UpdateProfile,AddPitch
 from .. import db,photos
 
 
@@ -62,4 +62,23 @@ def update_pic(uname):
         path = f'photos/{filename}'
         user.profile_pic_path = path
         db.session.commit()
-    return redirect(url_for('main.profile',uname=uname))    
+    return redirect(url_for('main.profile',uname=uname))
+
+
+@main.route('/user/<pitchname>/pitch',methods = ['GET','POST'])
+@login_required
+def addapitch(pitchname):
+    
+    form = AddPitch()
+
+    if form.validate_on_submit():
+        
+        pitch = Pitch(content=form.content.data,name=form.title.data)
+        db.session.add(pitch)
+        db.session.commit()
+
+
+        flash('Your pitch has been posted!', 'success')
+        return redirect(url_for('main.addapitch',pitchname=pitch.name))
+    title = 'Add a new Pitch'
+    return render_template('add_pitch.html',form =form)        

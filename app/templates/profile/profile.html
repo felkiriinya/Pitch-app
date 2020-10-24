@@ -54,7 +54,22 @@
         </div>
 
         <div class="col-md-5">
-
+            
+            <h3>{{user.username| capitalize}} Pitches </h3>
+            <div id='card' class="">
+                
+                <div class="card ">
+                  <div class="mx-auto card-body">
+                    <h3 class="card-title">{{pitch.title}}</h3>
+                   
+                    <p class="card-text">Pitch: {{pitch.content}}</p>
+                  </div>
+                </div>
+                
+            </div>
+             
+              <p>You have no pitches</p>
+              
             
         </div>
     </div>

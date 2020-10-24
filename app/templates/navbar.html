@@ -25,7 +25,7 @@ margin: 0 !important; min-height: 10vh;">
                            
                         </div>
                     </li>
-                    <li><a href="/" style="color: black; color: black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Add a Pitch</a></li>
+                    <li><a href="{{url_for('main.addapitch',pitchname=current_user.username)}}" style="color: black; color: black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Add a Pitch</a></li>
                     <li ><a href="{{url_for('main.profile',uname=current_user.username)}}" style=" color: black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;"> {{current_user.username}} Profile</a></li>
                     <li><a href="{{url_for('auth.logout')}}" style=" color: black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Log out</a></li>
                 </ul>
