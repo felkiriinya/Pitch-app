@@ -24,3 +24,9 @@ h1 {
     font-size: 5rem;
     
 }
+.form {
+    padding-top: 1%;
+    width: 85%;
+    /* height: 30vh; */
+    padding-left: 10%;
+}

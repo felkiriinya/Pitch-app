@@ -6,6 +6,10 @@
         {% include 'navbar.html' %}
 {% endblock %}  
 
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/profile.css')}}">
+{% endblock %}
        
 {% block content %}
 <div class="container">
@@ -13,23 +17,23 @@
     <!-- displaying  Username-->
         <div class="col-md-2"></div>
         <div class="col-md-5">
-            <h3> {{user.username| capitalize}} PROFILE </h3>
-
+            <h3 style="font-size: 30px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; text-decoration: underline;"> {{user.username| capitalize}} PROFILE </h3>
+            <br>
             <!--Displaying user bio-->
             {% if user.bio %}
-            <p> {{user.bio}}</p>
+            <p style="font-size:20px;font-weight: bold; font-family: Arial, Helvetica, sans-serif; "> {{user.bio}}</p>
             {%else%}
-            <p> {{user.username| capitalize}} has no bio </p>
+            <p style="font-size:20px;font-weight: bold; font-family: Arial, Helvetica, sans-serif; "> You have no bio </p>
             {% endif %}
-
+            
             {% if user == current_user %}
-            <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+            <a href="{{url_for('main.update_profile',uname=user.username)}}" style=" font-size: 20px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Add or Edit your Bio</a>
             {% endif %} 
-
+            <br><br>
             {% if user.profile_pic_path %}
             <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
             {%else%}
-            <p>No profile picture</p>
+            <p style="font-size: 20px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">You have no profile picture</p>
             {% endif %}
         </div>
 
