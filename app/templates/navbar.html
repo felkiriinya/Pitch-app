@@ -19,14 +19,14 @@ margin: 0 !important; min-height: 10vh;">
             </div>
             <div class="navbar-collapse collapse" style="float: left;">
                 <ul class="nav navbar-nav">
-                    <li><a href="/" style=" color:black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Home</a></li>
+                    <li><a href="{{url_for('main.loggedin')}}" style=" color:black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Home</a></li>
                     <li><a  class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer; color: black; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Categories</a>
                         <div class="dropdown-menu">
                            
                         </div>
                     </li>
                     <li><a href="/" style="color: black; color: black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Add a Pitch</a></li>
-                    <li><a href="/" style=" color: black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Profile</a></li>
+                    <li ><a href="{{url_for('main.profile',uname=current_user.username)}}" style=" color: black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;"> {{current_user.username}} Profile</a></li>
                     <li><a href="{{url_for('auth.logout')}}" style=" color: black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Log out</a></li>
                 </ul>
             </div>
