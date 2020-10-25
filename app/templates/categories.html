@@ -33,7 +33,10 @@
                   <p style="color: black; font-size: 12px;">
                     ViewSonic is offering up its Professional Development team to provide one-on-one online support for educators "with any learning initiatives they may have, including topics such as: distance learning as a whole, tools for distance learning, curriculum development, as well as video creation or conferencing for lessons
                   </p>
-                  
+                 for
+                  <small style="float: right;" style="cursor: pointer !important"><a href="/comment"> Add a
+                    Comment</a></small>
+                   
                 </div>                   
             </div>
 
@@ -66,6 +69,7 @@
             </div>
 
         </div>
+
         
        
         <h3 class="text-center" style="font-weight: bolder;"> BUSINESS PITCHES</h3>
@@ -170,7 +174,51 @@
                     </div>
 
                 </div>
-            </div>   
+            </div> 
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                  {% if pitches %}
+                  {% for pitch in pitches %}
+                  <div class="jumbotron">
+                    <div class="card" id="white">
+                      <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                          <h4 class="card-title" style="color: white;">{{pitch.title}}</h4>
+                          <p>{{pitch.pitch_content}}</p>
+                          <footer class="blockquote-footer">- {{pitch.pitcher.username}}</footer>
+                          <small style="float: right;" style="cursor: pointer !important"><a href="/comment/{{pitch.id}}"> Add a
+                              Comment</a></small>
+                        </blockquote>
+                      </div>
+                      <div class="card-footer text-muted" id="details">
+                        <small>Submitted on {{pitch.posted.strftime('%Y-%m-%d')}}</small><br>
+                        <!-- <a href="{{url_for('main.upvote', uname = current_user.id ,pitch_id = pitch.id)}}"><button
+                            class="btn my-2 my-sm-0">{{pitch.upvotes}}&nbsp;<i
+                              class="fas fa-thumbs-up"></i>&nbsp;like</button></a>&nbsp;&nbsp;
+                        <a href="{{url_for('main.downvote', uname = current_user.id ,pitch_id = pitch.id)}}"><button
+                            class="btn my-2 my-sm-0">{{pitch.downvotes}}&nbsp;<i
+                              class="fas fa-thumbs-up"></i>&nbsp;dislike</button></a>&nbsp;&nbsp; -->
+                      </div>
+                    </div>
+                    {% for comment in comments %}
+                    {%if comment.pitch_id == pitch.id %}
+                    <div class="card comments">
+                      <div class="card-body">
+                        <p class="card-text">{{comment.comment_content}}</p>
+                        <small class="commenter" style="float: right;">Comment By {{comment.author.username}}</small>
+                        <br>
+                        <hr style="width: 70%;">
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endfor%}
+                  </div>
+                  {% endfor%}
+                  {%endif%}
+                </div>
+                <div class="col-md-2"></div>
+              </div>  
   {%endblock %}          
 </body>
 </html>

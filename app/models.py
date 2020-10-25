@@ -43,11 +43,47 @@ class Pitch(db.Model):
     name = db.Column(db.String(255))
     content = db.Column(db.String())
     owner = db.Column(db.String())
+    category = db.Column(db.String())
+    # date = db.Column(db.DateTime,default=datetime.utcnow)
     users = db.relationship('User',backref ='pitch',lazy='dynamic')
 
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()
 
+    @classmethod
+    def get_all_pitches(cls):
+        '''
+        Function that queries the database and returns all the pictches
+        '''
+        return Pitch.query.all()
+
+    @classmethod
+    def get_pitches_by_category(cls,category_id):
+        '''
+        Function that queries the database and returns the pitches based on the category passed to it
+        '''
+        
+        return Pitch.query.filter_by(category_id=category_id)      
     def __repr__(self):
-        return f'Pitch{self.name}'       
+                return f"Pitch {self.name}"
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer,primary_key = True)
+    comment_content = db.Column(db.String())
+    # posted = db.Column(db.DateTime,default=datetime.utcnow)
+    author_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    pitch_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
+
+    def save_comment(self):
+            db.session.add(self)
+            db.session.commit()
+
+    @classmethod
+    def get_comments(cls,id):
+            comments = Comment.query.filter_by(pitch_id=id).all()
+            return comments
+                
+    def __repr__(self):
+        return f'COMMENT {self.comment_content}'

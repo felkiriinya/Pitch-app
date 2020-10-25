@@ -1,6 +1,5 @@
 {% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf%}
-
 {% block navbar %}
         {% include 'navbar.html' %}
 {% endblock %}  
@@ -10,10 +9,9 @@
 <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 <link rel="stylesheet" href="{{url_for('static',filename='css/profile.css')}}">
 {% endblock styles%}
+
 {% block content %}
 <div class="container form"> 
-  <h2 class="text-center" style="font-weight:bolder; text-decoration:underline;"> Add a pitch</h2>
-  
     <div class="row">
       <div class= "col-md-2"> </div>
       <div class="col-md-8">
@@ -24,9 +22,9 @@
         {{ message }}
         </div>
       {% endfor %}
-      <!-- Login form -->
-      
-      {{wtf.quick_form(form)}}
+     
+      {{comment_form.hidden_tag()}}
+      {{wtf.quick_form(comment_form)}}
      </div>
      <div class="col-md-2"> </div>
     </div>

@@ -1,8 +1,8 @@
 from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from flask_login import login_required
-from ..models import User,Pitch
-from .forms import UpdateProfile,AddPitch
+from ..models import User,Pitch,Comment
+from .forms import UpdateProfile,AddPitch,CommentForm
 from .. import db,photos
 
 
@@ -73,15 +73,17 @@ def addapitch(pitchname):
 
     if form.validate_on_submit():
         
-        pitch = Pitch(content=form.content.data,name=form.title.data)
-        db.session.add(pitch)
-        db.session.commit()
+        pitch = Pitch(content=form.content.data,name=form.title.data, category = form.category.data)
+        # db.session.add(pitch)
+        # db.session.commit()
+        pitch.save_pitch()
 
 
         flash('Your pitch has been posted!', 'success')
-        return redirect(url_for('main.addapitch',pitchname=pitch.name))
+        return redirect(url_for('main.categories',pitchname=pitch.name))
+
     title = 'Add a new Pitch'
-    return render_template('add_pitch.html',form =form)        
+    return render_template('add_pitch.html',form =form, title = title)        
 
 @main.route('/categories')
 def categories():
@@ -89,3 +91,20 @@ def categories():
     title = 'Pitches | Categories'
 
     return render_template('categories.html',title =title)
+
+@main.route("/comment", methods=['GET', 'POST'])
+@login_required
+def new_comment():
+    title = 'New Comment | Pitch'
+    form = CommentForm()
+    # categories = Category.query.all()
+    # pitch = Pitch.query.filter_by(id).first()
+    if form.validate_on_submit():
+        comment = Comment(comment_content=form.comment_content.data)
+        db.session.add(comment)
+        db.session.commit()
+        flash('Your comment has been added!', 'success')
+        return redirect(url_for('main.categories'))
+
+    return render_template('add_comment.html', title=title, comment_form=form)
+
