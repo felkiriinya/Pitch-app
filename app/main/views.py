@@ -82,3 +82,10 @@ def addapitch(pitchname):
         return redirect(url_for('main.addapitch',pitchname=pitch.name))
     title = 'Add a new Pitch'
     return render_template('add_pitch.html',form =form)        
+
+@main.route('/categories')
+def categories():
+
+    title = 'Pitches | Categories'
+
+    return render_template('categories.html',title =title)
