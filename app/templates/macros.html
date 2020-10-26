@@ -12,10 +12,10 @@
                   <p style="color: black; font-size: 12px;">
                     {{category.description}}
                   </p>
-                 
-                 <a href="{{url_for('main.new_comment',pitch_id = category.id)}}" class="btn btn-info"> Add a comment</a>
-                 <a href="{{url_for('main.upvote',pitch_id = category.id)}}" class= "btn btn-primary btn-sm"><i></i>Upvote <span>{{category.upvotes.count()}}</span></a>
-                 <a href="{{url_for('main.downvote',pitch_id = category.id)}}" class= "btn btn-danger btn-sm"><i class="far fa-thumbs-up"></i>Downvote <span>{{category.downvotes.count()}}</span></a>
+                 <p style="color: black; font-size: 12px;">Posted by {{category.pitcher}}</p>
+                 <a href="{{url_for('main.new_comment',pitch_id = category.id)}}" class="btn btn-info" style="background-color: rgb(184, 76, 37)!important;"> Add a comment</a>
+                 <a href="{{url_for('main.upvote',pitch_id = category.id)}}" class= "btn btn-primary btn-sm" style="background-color: rgb(184, 76, 37)!important;">Upvote <span>{{category.upvotes.count()}}</span></a>
+                 <a href="{{url_for('main.downvote',pitch_id = category.id)}}" class= "btn btn-danger btn-sm" style="background-color: rgb(184, 76, 37)!important;">Downvote <span>{{category.downvotes.count()}}</span></a>
         
                 </div>                   
             </div>
@@ -35,13 +35,13 @@
 			{% if comments %}
 			{% for comment in comments %}
 				<div class="row text-center">
-						<a><p style="color: brown">{{ comment.description }}</p></a>
-						<small> posted by {{comment.user.username}}</small>
+						<a><p style="color:rgb(241, 233, 233); font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">{{ comment.description }} <span style="font-size: 13px;">posted by {{comment.user.username}}</span> </p></a>
+						<small style="color:rgb(241, 233, 233); font-size: 15px;  font-family: Arial, Helvetica, sans-serif;"> </small>
 				</div>
 			{% endfor %}
 			{% else %}
 
-			<h3>This post does  not does not have any comments yet !</h3>
+			<h3>This post does not does not have any comments.</h3>
 			{%endif%}
 
 	</ul>

@@ -40,68 +40,15 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User{self.username}'
 
-
-# class Pitch(db.Model):
-#     __tablename__='pitches'
-
-#     id = db.Column(db.Integer,primary_key = True) 
-#     name = db.Column(db.String(255))
-#     content = db.Column(db.String())
-#     owner = db.Column(db.String())
-#     category = db.Column(db.String())
-#     # date = db.Column(db.DateTime,default=datetime.utcnow)
-#     users = db.relationship('User',backref ='pitch',lazy='dynamic')
-
-#     def save_pitch(self):
-#         db.session.add(self)
-#         db.session.commit()
-
-#     @classmethod
-#     def get_all_pitches(cls):
-#         '''
-#         Function that queries the database and returns all the pictches
-#         '''
-#         return Pitch.query.all()
-
-#     @classmethod
-#     def get_pitches_by_category(cls,category_id):
-#         '''
-#         Function that queries the database and returns the pitches based on the category passed to it
-#         '''
-        
-#         return Pitch.query.filter_by(category_id=category_id)      
-#     def __repr__(self):
-#                 return f"Pitch {self.name}"
-
-# class Comment(db.Model):
-#     __tablename__ = 'comments'
-#     id = db.Column(db.Integer,primary_key = True)
-#     comment_content = db.Column(db.String())
-#     # posted = db.Column(db.DateTime,default=datetime.utcnow)
-#     author_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-#     pitch_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
-
-#     def save_comment(self):
-#             db.session.add(self)
-#             db.session.commit()
-
-#     @classmethod
-#     def get_comments(cls,id):
-#             comments = Comment.query.filter_by(pitch_id=id).all()
-#             return comments
-                
-#     def __repr__(self):
-#         return f'COMMENT {self.comment_content}'
-
 class Pitch(db.Model):
-    '''
-    '''
+   
     __tablename__ = 'pitches'
 
     id = db.Column(db.Integer, primary_key = True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     description = db.Column(db.String(), index = True)
     title = db.Column(db.String())
+    pitcher = db.Column(db.String())
     category = db.Column(db.String(255), nullable=False)
     comments = db.relationship('Comment',backref='pitch',lazy='dynamic')
     upvotes = db.relationship('Upvote', backref = 'pitch', lazy = 'dynamic')

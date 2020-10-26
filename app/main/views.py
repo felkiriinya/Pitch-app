@@ -101,33 +101,20 @@ def categories():
 
     return render_template('categories.html',title =title, pitch = pitch, twitter=twitter, elevator= elevator, competition = competition, investor = investor, upvotes=upvotes )
 
-# @main.route("/comment", methods=['GET', 'POST'])
-# def new_comment():
-#     title = 'New Comment | Pitch'
-#     form = CommentForm()
-#     # categories = Category.query.all()
-#     # pitch = Pitch.query.filter_by(id).first()
-#     if form.validate_on_submit():
-#         comment = Comment(comment_content=form.comment_content.data)
-#         db.session.add(comment)
-#         db.session.commit()
-#         flash('Your comment has been added!', 'success')
-#         return redirect(url_for('main.categories'))
-
-#     return render_template('add_comment.html', title=title, comment_form=form)
 
 @main.route('/pitches/new/', methods = ['GET','POST'])
-# @login_required
+
 def new_pitch():
     form = AddPitch()
     my_upvotes = Upvote.query.filter_by(pitch_id = Pitch.id)
     if form.validate_on_submit():
+        pitcher = form.pitcher.data
         description = form.description.data
         title = form.title.data
-        # owner_id = current_user
+        owner_id = current_user
         category = form.category.data
-        # print(current_user._get_current_object().id)
-        new_pitch = Pitch(title = title,description=description,category=category)
+        
+        new_pitch = Pitch(owner_id =current_user._get_current_object().id, title = title,description=description,category=category, pitcher = pitcher)
         db.session.add(new_pitch)
         db.session.commit()
         
