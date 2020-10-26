@@ -9,7 +9,7 @@ Pitch-Deck was developed to allow users to visit the site and get inspiration on
 ![Loggedin](./app/static/images/Loggedin.png)
 
 ## Live link
-Visit the application on .
+Visit the application on https://fel-pitch-app.herokuapp.com/ 
 
 ## Figma Link
 This is the [figma](https://www.figma.com/file/srb6h4E2FGrFhgH3y63swI/PITCH-DECK?node-id=0%3A1) link to my design.
