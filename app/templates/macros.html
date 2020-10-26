@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+{% macro display(category_list) %}
+<div class="row">
+	{% if category_list %}
+		{% for category in category_list %}
+        <div class="col-md-4">
+            <div class="panel panel-default" >
+                <div class="panel-heading" style="height: 30px; padding-top: 2px; font-weight: bolder; text-transform: uppercase; color: rgb(184, 76, 37);" >
+                    {{category.title}} {{category.category}}
+                </div>
+                <div class="panel-body" style="background-color:#faf5f5;">
+                  <p style="color: black; font-size: 12px;">
+                    {{category.description}}
+                  </p>
+                 
+                 <a href="{{url_for('main.new_comment',pitch_id = category.id)}}" class="btn btn-info"> Add a comment</a>
+                 <a href="{{url_for('main.upvote',pitch_id = category.id)}}" class= "btn btn-primary btn-sm"><i></i>Upvote <span>{{category.upvotes.count()}}</span></a>
+                 <a href="{{url_for('main.downvote',pitch_id = category.id)}}" class= "btn btn-danger btn-sm"><i class="far fa-thumbs-up"></i>Downvote <span>{{category.downvotes.count()}}</span></a>
+        
+                </div>                   
+            </div>
+        
+        </div>
+		{% endfor %}
+	{% else %}
+	{% endif %}
+</div>
+{% endmacro %}
+
+
+
+{% macro displayComment(comments) %}
+<ul>
+
+			{% if comments %}
+			{% for comment in comments %}
+				<div class="row text-center">
+						<a><p style="color: brown">{{ comment.description }}</p></a>
+						<small> posted by {{comment.user.username}}</small>
+				</div>
+			{% endfor %}
+			{% else %}
+
+			<h3>This post does  not does not have any comments yet !</h3>
+			{%endif%}
+
+	</ul>
+	
+			
+
+
+{% endmacro %}

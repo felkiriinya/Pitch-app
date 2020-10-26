@@ -1,224 +1,40 @@
-{% extends 'base.html' %}
+{% extends 'bootstrap/base.html' %}
+{% import 'macros.html' as macro %}
 
-
-<!DOCTYPE html>
-<html lang="en">
+{% block navbar %}
+        {% include 'navbar.html' %}
+{% endblock %}  
 <head>
-    {% block styles %}
+    {% block styles%}
     {{ super() }}
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="stylesheet" href="{{url_for('static',filename='css/profile.css')}}">
-
-
     {% endblock %}
+           
    
 </head>
-<body>
+  {% block content %}
     
-            <!-- Navbar block  --> 
-            {% block navbar %}
-            {% include 'navbar.html' %}
-            {% endblock %}  
+  
 
-            {% block content%}
-    <h3 class="text-center" style="font-weight: bolder;"> TECHNOLOGY PITCHES</h3>
-    <hr style="width: 50%; ">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-default" >
-                <div class="panel-heading" style="height: 30px; padding-top: 2px; font-weight: bolder; text-transform: uppercase; color: rgb(184, 76, 37);" >
-                    ViewSonic
-                </div>
-                <div class="panel-body" style="background-color:#faf5f5;">
-                  <p style="color: black; font-size: 12px;">
-                    ViewSonic is offering up its Professional Development team to provide one-on-one online support for educators "with any learning initiatives they may have, including topics such as: distance learning as a whole, tools for distance learning, curriculum development, as well as video creation or conferencing for lessons
-                  </p>
-                 for
-                  <small style="float: right;" style="cursor: pointer !important"><a href="/comment"> Add a
-                    Comment</a></small>
-                   
-                </div>                   
-            </div>
-
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-default" >
-                <div class="panel-heading" style="height: 30px; padding-top: 2px; font-weight: bolder; text-transform: uppercase; color: rgb(184, 76, 37);" >
-                    Salesforce touts
-                </div>
-                <div class="panel-body" style="background-color:#faf5f5;">
-                  <p style="color: black; font-size: 12px;">
-                    Work.com brings together the full power of health experts, business leaders and the Salesforce ecosystem in a resource center informed by the Business Roundtable and the University of California San Francisco (UCSF) with insights from business, health and government leaders as well as analysis.
-                  </p>
-                  
-                </div>                   
-            </div>
-
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-default" >
-                <div class="panel-heading" style="height: 30px; padding-top: 2px; font-weight: bolder; text-transform: uppercase; color: rgb(184, 76, 37);" >
-                    Arc
-                 </div>   
-                <div class="panel-body" style="background-color:#faf5f5;">
-                  <p style="color: black; font-size: 12px;">
-                    We believe software can help combat this global pandemic, and that's why we're launching the Code Against COVID-19 initiative...," said Weiting Liu, founder and CEO of Arc. "From tracking outbreaks and reducing the spread to scaling testing and supporting healthcare, teams around the world are using software to flatten the curve. 
-                  </p>
-                  
-                </div>                   
-            </div>
-
+  <h3 class="text-center" style="font-weight: bolder;"> TWITTER PITCHES</h3>
+        <div>
+            {{ macro.display(twitter) }}
         </div>
 
+  <h3 class="text-center" style="font-weight: bolder;"> ElEVATOR PITCHES</h3>
+        <div>
+            {{ macro.display(elevator) }}
+        </div>   
         
-       
-        <h3 class="text-center" style="font-weight: bolder;"> BUSINESS PITCHES</h3>
-            <hr style="width: 50%; ">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="panel panel-default" >
-                        <div class="panel-heading" style="height: 30px; padding-top: 2px; font-weight: bolder; text-transform: uppercase; color: rgb(184, 76, 37);" >
-                           Airbnb
-                        </div>
-                        <div class="panel-body" style="background-color:#faf5f5;">
-                        <p style="color: black; font-size: 12px;">
-                            Brand identity is established with a sans-serif typeface, use of color, and a clear tagline: “Book rooms with locals, rather than hotels.The problem statement is straightforward: Travelers need an affordable alternative to hotels.
-                        </p>
-                        
-                        </div>                   
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="panel panel-default" >
-                        <div class="panel-heading" style="height: 30px; padding-top: 2px; font-weight: bolder; text-transform: uppercase; color: rgb(184, 76, 37);" >
-                            Fundz
-                        </div>
-                        <div class="panel-body" style="background-color:#faf5f5;">
-                        <p style="color: black; font-size: 12px;">
-                            Fundz is terrific. It allows me to keep updated on new fundings with real time alerts right on my browser! It provides me with valuable information that I have used in my sales process and helped me close more deals!
-                        </p>
-                        
-                        </div>                   
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="panel panel-default" >
-                        <div class="panel-heading" style="height: 30px; padding-top: 2px; font-weight: bolder; text-transform: uppercase; color: rgb(184, 76, 37);" >
-                            ACCELERATORS
-                        </div>
-                        <div class="panel-body" style="background-color:#faf5f5;">
-                        <p style="color: black; font-size: 12px;">
-                            Startup accelerators are fixed-term, cohort-based programs. These include mentorship and educational components and culminate in a demo day where startup founders pitch their ideas in front of potential investors. However, Startup accelerators are not always what they look like.
-                        </div>                   
-                    </div>
-
-                </div>
-            </div>
-            <h3 class="text-center" style="font-weight: bolder;"> TWITTER PITCHES</h3>
-            <hr style="width: 50%; ">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="panel panel-default" >
-                        <div class="panel-heading" style="height: 30px; padding-top: 2px; font-weight: bolder; text-transform: uppercase; color: rgb(184, 76, 37);" >
-                            What is a twitter pitch?
-                        </div>
-                        <div class="panel-body" style="background-color:#faf5f5;">
-                        <p style="color: black; font-size: 12px;">
-                            
-                            This summarizes your whole idea in one punchy sentence. It has become common to create a comparison with well-known companies to facilitate this task for startup founders (and listeners). For this reason, we often hear:
-                        </p>
-                        
-                        </div>                   
-                    </div>
-
-                </div>
-            </div>  
-            <h3 class="text-center" style="font-weight: bolder;"> ELEVATOR PITCHES</h3>
-            <hr style="width: 50%; ">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="panel panel-default" >
-                        <div class="panel-heading" style="height: 30px; padding-top: 2px; font-weight: bolder; text-transform: uppercase; color: rgb(184, 76, 37);" >
-                           What are Elevator pitches?
-                        </div>
-                        <div class="panel-body" style="background-color:#faf5f5;">
-                        <p style="color: black; font-size: 12px;">
-                            This is a short description of your company. The idea is that this pitch should last as long as an elevator ride, that is between 15 seconds and a couple of minutes. However, on most occasion, your elevator pitch shouldn’t be longer than 30 seconds.
-
-
-                        </p>
-                        
-                        </div>                   
-                    </div>
-
-                </div>
-            </div>   
-            <h3 class="text-center" style="font-weight: bolder;"> COMPETITION PITCHES</h3>
-            <hr style="width: 50%; ">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="panel panel-default" >
-                        <div class="panel-heading" style="height: 30px; padding-top: 2px; font-weight: bolder; text-transform: uppercase; color: rgb(184, 76, 37);" >
-                           What are Competition pitches?
-                        </div>
-                        <div class="panel-body" style="background-color:#faf5f5;">
-                        <p style="color: black; font-size: 12px;">
-                            This is longer than the previous two and it needs to be presented with a pitch deck. The deck you will be building is very similar to the one you would use to send to investors.
-
-                            A crucial thing to understand is that in startup competition, startup founders have limited time (between 3 and 5 minutes) to explain what their startup does and its traction. In a competition pitch deck, it is crucial to replace words with images.
-                        </p>
-                        
-                        </div>                   
-                    </div>
-
-                </div>
-            </div> 
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                  {% if pitches %}
-                  {% for pitch in pitches %}
-                  <div class="jumbotron">
-                    <div class="card" id="white">
-                      <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                          <h4 class="card-title" style="color: white;">{{pitch.title}}</h4>
-                          <p>{{pitch.pitch_content}}</p>
-                          <footer class="blockquote-footer">- {{pitch.pitcher.username}}</footer>
-                          <small style="float: right;" style="cursor: pointer !important"><a href="/comment/{{pitch.id}}"> Add a
-                              Comment</a></small>
-                        </blockquote>
-                      </div>
-                      <div class="card-footer text-muted" id="details">
-                        <small>Submitted on {{pitch.posted.strftime('%Y-%m-%d')}}</small><br>
-                        <!-- <a href="{{url_for('main.upvote', uname = current_user.id ,pitch_id = pitch.id)}}"><button
-                            class="btn my-2 my-sm-0">{{pitch.upvotes}}&nbsp;<i
-                              class="fas fa-thumbs-up"></i>&nbsp;like</button></a>&nbsp;&nbsp;
-                        <a href="{{url_for('main.downvote', uname = current_user.id ,pitch_id = pitch.id)}}"><button
-                            class="btn my-2 my-sm-0">{{pitch.downvotes}}&nbsp;<i
-                              class="fas fa-thumbs-up"></i>&nbsp;dislike</button></a>&nbsp;&nbsp; -->
-                      </div>
-                    </div>
-                    {% for comment in comments %}
-                    {%if comment.pitch_id == pitch.id %}
-                    <div class="card comments">
-                      <div class="card-body">
-                        <p class="card-text">{{comment.comment_content}}</p>
-                        <small class="commenter" style="float: right;">Comment By {{comment.author.username}}</small>
-                        <br>
-                        <hr style="width: 70%;">
-                      </div>
-                    </div>
-                    {% endif %}
-                    {% endfor%}
-                  </div>
-                  {% endfor%}
-                  {%endif%}
-                </div>
-                <div class="col-md-2"></div>
-              </div>  
-  {%endblock %}          
-</body>
-</html>
+  <h3 class="text-center" style="font-weight: bolder;"> COMPETITION PITCHES</h3>
+        <div>
+            {{ macro.display(competition) }}
+        </div>
+        
+   <h3 class="text-center" style="font-weight: bolder;"> INVESTOR PITCHES</h3>
+        <div>
+            {{ macro.display(investor) }}
+        </div>     
+        
+        {% endblock %}       

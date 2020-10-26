@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% import 'macros.html' as macro %}
 {% import 'bootstrap/wtf.html' as wtf%}
 {% block navbar %}
         {% include 'navbar.html' %}
@@ -16,15 +17,19 @@
       <div class= "col-md-2"> </div>
       <div class="col-md-8">
       <!--Flash message -->
-      {% for message in get_flashed_messages() %}
+      <!-- {% for message in get_flashed_messages() %}
         <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         {{ message }}
         </div>
-      {% endfor %}
+      {% endfor %} -->
      
-      {{comment_form.hidden_tag()}}
-      {{wtf.quick_form(comment_form)}}
+      
+      {{wtf.quick_form(form)}}
+
+      <h4 style="color: brown; text-align: center;text-underline-position: below">Comments</h4>
+                        {{ macro.displayComment(comment) }}
+
      </div>
      <div class="col-md-2"> </div>
     </div>
