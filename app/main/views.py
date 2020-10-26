@@ -65,25 +65,6 @@ def update_pic(uname):
     return redirect(url_for('main.profile',uname=uname))
 
 
-# @main.route('/user/<pitchname>/pitch',methods = ['GET','POST'])
-
-# def addapitch(pitchname):
-    
-#     form = AddPitch()
-
-#     if form.validate_on_submit():
-        
-#         pitch = Pitch(content=form.content.data,name=form.title.data, category = form.category.data)
-#         # db.session.add(pitch)
-#         # db.session.commit()
-#         pitch.save_pitch()
-
-
-#         flash('Your pitch has been posted!', 'success')
-#         return redirect(url_for('main.categories',pitchname=pitch.name))
-
-#     title = 'Add a new Pitch'
-#     return render_template('add_pitch.html',form =form, title = title)        
 
 @main.route('/categories')
 def categories():
