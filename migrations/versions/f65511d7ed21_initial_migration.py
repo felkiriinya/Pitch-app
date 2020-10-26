@@ -1,8 +1,8 @@
 """Initial Migration
 
-Revision ID: b97353f9855b
+Revision ID: f65511d7ed21
 Revises: 
-Create Date: 2020-10-26 20:36:51.176528
+Create Date: 2020-10-27 00:16:50.944403
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b97353f9855b'
+revision = 'f65511d7ed21'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,9 +30,10 @@ def upgrade():
     op.create_index(op.f('ix_users_email'), 'users', ['email'], unique=True)
     op.create_table('pitches',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('owner_id', sa.Integer(), nullable=False),
+    sa.Column('owner_id', sa.Integer(), nullable=True),
     sa.Column('description', sa.String(), nullable=True),
     sa.Column('title', sa.String(), nullable=True),
+    sa.Column('pitcher', sa.String(), nullable=True),
     sa.Column('category', sa.String(length=255), nullable=False),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -40,8 +41,8 @@ def upgrade():
     op.create_index(op.f('ix_pitches_description'), 'pitches', ['description'], unique=False)
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('pitch_id', sa.Integer(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('pitch_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
     sa.ForeignKeyConstraint(['pitch_id'], ['pitches.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
