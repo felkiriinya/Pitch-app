@@ -34,6 +34,8 @@ Technologies used to develop this application:
 4. HTML 
 5. CSS
 
+## Known bugs
+One can't downvote yet.
 
 ## Support and contact details
 
